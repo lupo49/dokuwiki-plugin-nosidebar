@@ -6,6 +6,7 @@
  * 
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Matthias Schulte <dokuwiki@lupo49.de>
+ * @version    2013-07-14
  */
  
 if(!defined('DOKU_INC')) define('DOKU_INC',realpath(dirname(__FILE__).'/../../').'/');
@@ -27,11 +28,10 @@ class syntax_plugin_nosidebar extends DokuWiki_Syntax_Plugin {
     }
 
     function render($mode, &$renderer, $data) {
-        global $lang, $conf;
-        // Delete sidebar heading and pagename to disable sidebar
-        $lang['sidebar'] = '';
-        $conf['sidebar'] = '';
-
+        if($mode == "metadata") {
+            // set flag in metadata to disable sidebar in action component
+            $renderer->meta['nosidebar'] = true;
+        }
         return true;
     } 
 }
