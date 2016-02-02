@@ -23,11 +23,11 @@ class syntax_plugin_nosidebar extends DokuWiki_Syntax_Plugin {
         $this->Lexer->addSpecialPattern('~~NOSIDEBAR~~', $mode, 'plugin_nosidebar');
     }
  
-    function handle($match, $state, $pos, &$handler){
+    function handle($match, $state, $pos, Doku_Handler $handler){
         return true;
     }
 
-    function render($mode, &$renderer, $data) {
+    function render($mode, Doku_Renderer $renderer, $data) {
         if($mode == "metadata") {
             // set flag in metadata to disable sidebar in action component
             $renderer->meta['nosidebar'] = true;

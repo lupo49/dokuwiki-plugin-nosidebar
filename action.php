@@ -14,7 +14,7 @@ require_once(DOKU_PLUGIN.'action.php');
 
 class action_plugin_nosidebar extends DokuWiki_Action_Plugin {
 
-    function register(&$controller) {
+    function register(Doku_Event_Handler $controller) {
         $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'nosidebar', array());
     }
 
